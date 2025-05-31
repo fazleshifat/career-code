@@ -33,7 +33,9 @@ const AuthProvider = ({ children }) => {
                 setLoading(false);
                 if (user?.email) {
                     const userData = { email: user.email };
-                    axios.post('http://localhost:3000/jwt', userData)
+                    axios.post('http://localhost:3000/jwt', userData, {
+                        withCredentials: true  // must have to provide whenever we want to set cookies
+                    })
                         .then(res => {
                             console.log('token after jwt', res.data)
                         })
