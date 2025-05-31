@@ -1,51 +1,69 @@
 import React from 'react';
-import { motion } from "motion/react"
+import { motion } from "framer-motion";
 
 const Banner = () => {
     return (
-        <div className="hero bg-base-200 dark:bg-gray-900 min-h-[90vh] px-8">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className='flex-1'>
-                    {/* banner image 1 */}
+        <section className="hero min-h-[90vh] bg-gradient-to-br from-indigo-100 via-white to-purple-100 dark:from-gray-900 dark:via-indigo-800 dark:to-gray-900 px-6 py-12">
+            <div className="hero-content flex flex-col-reverse lg:flex-row-reverse gap-12 max-w-7xl mx-auto w-full">
+                
+                {/* Image Section */}
+                <div className="flex-1 flex flex-col gap-8 items-center lg:items-end relative">
+                    {/* Banner Image 1 */}
                     <motion.img
-                        animate={
-                            {
-                                y: [20, 100, 20],
-                                transition: { duration: 5, repeat: Infinity },
-
-                            }}
-                        src='/assets/banner-1.jpg'
-                        className="max-w-md rounded-lg shadow-2xl w-full rounded-t-4xl rounded-br-4xl border-l-8 border-b-8 dark:border-white border-indigo-400"
+                        animate={{
+                            y: [0, -20, 0],
+                            transition: { duration: 4, repeat: Infinity },
+                        }}
+                        src="/assets/banner-1.jpg"
+                        alt="Job seeker"
+                        className="w-64 lg:w-80 rounded-t-4xl rounded-br-4xl border-l-[6px] border-b-[6px] border-indigo-400 dark:border-white shadow-2xl object-cover z-10"
                     />
-                    {/* banner img 2 */}
-                    <motion.img
-                        animate={
-                            {
-                                x: [50, 100, 50],
-                                transition: { duration: 10, delay: 2, repeat: Infinity },
 
-                            }}
-                        src='/assets/banner-2.jpg'
-                        className="max-w-sm rounded-lg shadow-2xl w-full rounded-t-4xl rounded-br-4xl border-l-8 border-b-8 dark:border-white border-indigo-400 mx-auto"
+                    {/* Banner Image 2 */}
+                    <motion.img
+                        animate={{
+                            x: [0, 20, 0],
+                            transition: { duration: 6, repeat: Infinity },
+                        }}
+                        src="/assets/banner-2.jpg"
+                        alt="Job finder"
+                        className="w-48 lg:w-64 rounded-t-4xl rounded-br-4xl border-l-[6px] border-b-[6px] border-indigo-400 dark:border-white shadow-2xl object-cover -mt-12 lg:-mt-24 z-0"
                     />
                 </div>
-                <div className='flex-1 text-gray-900 dark:text-gray-300'>
+
+                {/* Text Section */}
+                <div className="flex-1 text-center lg:text-left space-y-6 text-gray-900 dark:text-gray-200">
                     <motion.h1
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1, transition: { duration: 2 } }} className="text-5xl font-bold">Easiest way to find
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2 }}
+                        className="text-4xl md:text-5xl font-extrabold leading-tight"
+                    >
+                        Easiest way to find&nbsp;
                         <motion.span
                             animate={{
-                                color: ['#ff5733', '#33ff33', '#8a33ff'],
-                                transition: { duration: 2, repeat: Infinity }
-                            }}> Jobs</motion.span>!</motion.h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                                color: ['#6366F1', '#EC4899', '#10B981'],
+                                transition: { duration: 3, repeat: Infinity, repeatType: "loop" },
+                            }}
+                            className="inline-block"
+                        >
+                            Jobs!
+                        </motion.span>
+                    </motion.h1>
+                    <p className="text-base md:text-lg leading-relaxed">
+                        Discover thousands of job opportunities tailored to your skills.
+                        Apply with ease, track your progress, and level up your career from anywhere.
                     </p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="btn btn-primary text-white shadow-lg transition duration-300"
+                    >
+                        Get Started
+                    </motion.button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
